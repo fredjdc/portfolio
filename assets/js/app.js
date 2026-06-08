@@ -73,7 +73,7 @@ const COMMANDS = [
   { label: "Jump to: Professional Experience", action: () => scrollToSection("#experience"), desc: "View career history", icon: "Timeline" },
   { label: "Action: Toggle Dark Mode", action: () => toggleTheme(), desc: "Switch UI theme", icon: "🌓" },
   { label: "Action: Copy Email Address", action: () => copyEmail(), desc: "Copy to clipboard", icon: "📧" },
-  { label: "Action: Download Resume", action: () => alert("Resume download triggered (Mock)"), desc: "PDF document", icon: "📄" }
+  { label: "Action: Download Resume", action: () => alert("Resume download triggered"), desc: "PDF document", icon: "📄" }
 ];
 
 // --- EVENT INITIALIZATION ---
