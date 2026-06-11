@@ -1954,6 +1954,10 @@ body {
   grid-column: auto;
 }
 
+.hero-content {
+  min-width: 0;
+}
+
 .hero-meta {
   margin-bottom: 22px;
   color: var(--accent);
@@ -2005,7 +2009,9 @@ body {
 }
 
 .hero-actions {
+  display: flex;
   gap: 14px;
+  min-width: 0;
 }
 
 .hero-image {
@@ -2311,7 +2317,7 @@ body {
 
   .hero {
     padding-top: 62px;
-    padding-bottom: 48px;
+    padding-bottom: 40px;
   }
 
   .hero-grid {
@@ -2321,6 +2327,7 @@ body {
 
   .hero-content {
     order: 2;
+    min-width: 0;
   }
 
   .hero-image {
@@ -2329,26 +2336,29 @@ body {
   }
 
   .hero-image img {
-    max-width: 196px;
+    max-width: 180px;
     border-width: 7px;
   }
 
   .hero h1 {
-    max-width: 100%;
-    font-size: clamp(2.75rem, 10vw, 4.05rem);
-    line-height: 1;
-    letter-spacing: -0.06em;
+    max-width: 14ch;
+    font-size: clamp(2.2rem, 8.8vw, 3.35rem);
+    line-height: 1.04;
+    letter-spacing: -0.05em;
+    text-wrap: balance;
   }
 
   .hero-subheadline {
     max-width: 100%;
-    font-size: 1.03rem;
-    line-height: 1.62;
+    font-size: 1rem;
+    line-height: 1.58;
   }
 
   .hero-actions {
     width: 100%;
     flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
   }
 
   .btn {
@@ -2356,10 +2366,14 @@ body {
   }
 
   .proof-row {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     flex-wrap: nowrap;
     overflow-x: auto;
-    padding-bottom: 4px;
+    padding: 0 2px 4px;
     scrollbar-width: none;
+    scroll-snap-type: x proximity;
   }
 
   .proof-row::-webkit-scrollbar {
@@ -2368,6 +2382,7 @@ body {
 
   .proof-pill {
     white-space: nowrap;
+    scroll-snap-align: start;
   }
 
   .metrics-grid {
@@ -2433,15 +2448,23 @@ body {
 
 @media (max-width: 768px) {
   .timeline-header {
-    display: grid;
-    grid-template-columns: 1fr auto auto;
-    align-items: center;
-    gap: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 
   .timeline-meta {
     text-align: left;
     width: auto;
+  }
+
+  .timeline-role {
+    flex-wrap: wrap;
+  }
+
+  .timeline-toggle-icon {
+    align-self: flex-start;
   }
 }
 
@@ -2460,20 +2483,25 @@ body {
   }
 
   .hero {
-    padding-top: 48px;
+    padding-top: 40px;
+    padding-bottom: 32px;
   }
 
   .hero-image img {
-    max-width: 160px;
+    max-width: 140px;
   }
 
   .hero h1 {
-    font-size: clamp(2.45rem, 12.5vw, 3.55rem);
+    max-width: 13ch;
+    font-size: clamp(2rem, 10vw, 2.8rem);
+    line-height: 1.03;
+    letter-spacing: -0.045em;
   }
 
   .hero-meta {
     font-size: 0.66rem;
     flex-wrap: wrap;
+    margin-bottom: 14px;
   }
 
   .metric-num {
