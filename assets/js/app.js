@@ -11,6 +11,11 @@ const PROJECTS_DATA = {
     tags: ["Product Strategy", "Figma Design System", "SwiftUI Build", "Conversion UI"],
     colorClass: "bricks",
     accentColor: "var(--bricks-accent)",
+    screenshots: [
+      { src: "images/bricks-calc-web-image-1.png", alt: "Bricks Calc onboarding and mortgage planning screen" },
+      { src: "images/bricks-calc-web-image-2.png", alt: "Bricks Calc calculator and results screen" },
+      { src: "images/bricks-calc-web-image-3.png", alt: "Bricks Calc amortization and payment planning screen" }
+    ],
     highlights: [
       {
         title: "Product Strategy & Onboarding Flow",
@@ -40,6 +45,11 @@ const PROJECTS_DATA = {
     tags: ["Product Design", "OCR", "Document UX", "Privacy"],
     colorClass: "scan",
     accentColor: "var(--scan-accent)",
+    screenshots: [
+      { src: "images/bricks-scan-web-image-1.png", alt: "Bricks Scan capture and import screen" },
+      { src: "images/bricks-scan-web-image-2.png", alt: "Bricks Scan OCR review and document details screen" },
+      { src: "images/bricks-scan-web-image-3.png", alt: "Bricks Scan summaries and organization screen" }
+    ],
     highlights: [
       {
         title: "Scan, Import & OCR Review",
@@ -233,6 +243,36 @@ function openProjectDrawer(caseId) {
     sec.appendChild(secDesc);
     content.appendChild(sec);
   });
+
+  if (data.screenshots?.length) {
+    const gallery = document.createElement("section");
+    gallery.className = "drawer-gallery";
+
+    const galleryTitle = document.createElement("h3");
+    galleryTitle.className = "drawer-section-title";
+    galleryTitle.textContent = "Screens";
+    gallery.appendChild(galleryTitle);
+
+    const galleryRail = document.createElement("div");
+    galleryRail.className = "drawer-gallery-rail";
+
+    data.screenshots.forEach((shot, index) => {
+      const figure = document.createElement("figure");
+      figure.className = "drawer-gallery-item";
+
+      const image = document.createElement("img");
+      image.className = "drawer-gallery-image";
+      image.src = shot.src;
+      image.alt = shot.alt;
+      image.loading = index === 0 ? "eager" : "lazy";
+
+      figure.appendChild(image);
+      galleryRail.appendChild(figure);
+    });
+
+    gallery.appendChild(galleryRail);
+    content.appendChild(gallery);
+  }
 
   overlay.classList.add("active");
   document.body.style.overflow = "hidden"; // Prevent body scroll
